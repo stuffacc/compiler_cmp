@@ -1,0 +1,12 @@
+Имя файла,"size .text, bytes","size .data, bytes","size .bss, bytes","size file, bytes","time, 1000 runs"
+gccO0,text=3760,data=608,bss=592,file=16992,"628.4 µs ± 168.0 µs    [User: 374.8 µs, System: 343.4 µs]"
+gccO2,text=3183,data=608,bss=584,file=16992,"588.3 µs ± 194.5 µs    [User: 322.8 µs, System: 366.5 µs]"
+gccOs,text=3021,data=608,bss=584,file=16992,"589.6 µs ± 180.1 µs    [User: 400.3 µs, System: 293.9 µs]"
+,,,,,
+clangO0,text=3492,data=584,bss=576,file=16992,"592.1 µs ± 195.7 µs    [User: 389.1 µs, System: 307.2 µs]"
+clangO2,text=3221,data=592,bss=576,file=17048,"611.0 µs ± 207.2 µs    [User: 323.8 µs, System: 376.6 µs]"
+clangOs,text=3029,data=592,bss=576,file=17048,"502.2 µs ± 225.7 µs    [User: 295.8 µs, System: 305.8 µs]"
+,,,,,
+icxO0,text=3443,data=584,bss=576,file=16936,"637.3 µs ± 211.3 µs    [User: 327.0 µs, System: 406.1 µs]"
+icxO2,text=3657,data=592,bss=576,file=16984,"590.1 µs ± 249.2 µs    [User: 367.7 µs, System: 326.8 µs]"
+icxOs,text=2629,data=592,bss=576,file=16984,"608.6 µs ± 211.5 µs    [User: 359.5 µs, System: 337.7 µs]"

@@ -486,7 +486,7 @@ void loop_unrolling(int x),	.globl	loop_unrolling,"	movl	$0, i(%rip)","	movl	$.L
 "int jump_compression(int i, int j, int k, int l, int m)",	.globl	jump_compression,	.globl	jump_compression                # -- Begin function jump_compression,	.globl	jump_compression                # -- Begin function jump_compression,
 {,"	.type	jump_compression, @function","	.p2align	4, 0x90",	.p2align	4,
 beg_1:,jump_compression:,"	.type	jump_compression,@function","	.type	jump_compression,@function",Все компиляторы
-    if (i < j),.LFB42:,jump_compression:                       # @jump_compression,jump_compression:                       # ,выполнели прямой переход
+    if (i < j),.LFB42:,jump_compression:                       # @jump_compression,jump_compression:                       # ,выполнили прямой переход
         if (j < k),	.cfi_startproc,	.cfi_startproc,	.cfi_startproc,
             if (k < l),	endbr64,# %bb.0:,# %bb.0:,и используются регистры вместо
                 if (l < m),	pushq	%r15,	pushq	%rbp,	pushq	%rbp,стека для переменных

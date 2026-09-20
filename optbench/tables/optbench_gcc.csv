@@ -20,7 +20,7 @@ j4 = 2;,"	movl	$2, j4(%rip)","	movl	$2, %edx","	movl	$2, %edx",O2 и Os подс
 	},	jge	.L2,"	cmpl	i4(%rip), %eax","	cmpl	i4(%rip), %eax",Так как в Os код при выполнении 
 ,"	movl	i4(%rip), %edx", jg .L37,	jle	.L26,условия идёт сразу после проверки
 ,"	movl	j4(%rip), %eax",.L37:,"	movl	$2, %edx",
-,"	cmpl	%eax, %edx","	movl	$2, %edx","	movq	%rbx, %rsi",В O2 – в другом блоке
+,"	cmpl	%eax, %edx","	movl	$2, %edx","	movq	%rbx, %rsi",В O2 - в другом блоке
 ,	jge	.L2,"	movq	%rbx, %rsi","	movl	$2, %edi",
 ,"	movl	$2, i2(%rip)","	movl	$2, %edi","	xorl	%eax, %eax",Os выбрал более короткий вариант
 ,"	movl	i2(%rip), %eax","	xorl	%eax, %eax","	movl	$2, i2(%rip)",

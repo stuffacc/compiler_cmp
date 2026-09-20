@@ -104,11 +104,11 @@ j4 = 2;,"	movl	$2, %edx","	movl	$2, j4(%rip)","	movl	$.L.str, %edi",Все ко�
 ,,.LBB0_7:                                # =>This Inner Loop Header: Depth=1,,"gcc: movl %esi, i(%rip) – можно убрать"
 ,,"	movdqa	%xmm0, %xmm5",,
 ,,"	pxor	%xmm1, %xmm5",,
-,,"	movdqa	%xmm2, %xmm6",,clang: самый большой вариант по памяти
-,,"	pcmpgtd	%xmm5, %xmm6",,"не оптимальнo ни по размеру, ни по скорости"
-,,"	pshufd	$245, %xmm5, %xmm5              # xmm5 = xmm5[1,1,3,3]",,
+,,"	movdqa	%xmm2, %xmm6",,clang: обработка блоков по 4 байта
+,,"	pcmpgtd	%xmm5, %xmm6",,SSE используется для параллельного
+,,"	pshufd	$245, %xmm5, %xmm5              # xmm5 = xmm5[1,1,3,3]",,вычисления маски условий
 ,,"	pcmpeqd	%xmm3, %xmm5",,
-,,"	pand	%xmm6, %xmm5",,
+,,"	pand	%xmm6, %xmm5",,"не оптимальнo ни по размеру, ни по скорости"
 ,,"	movd	%xmm5, %edx",,
 ,,"	testb	$1, %dl",,
 ,,	je	.LBB0_9,,
@@ -478,7 +478,7 @@ void loop_unrolling(int x),	.globl	loop_unrolling, .globl loop_unrolling        
 ,,,,
 ,,,,
 "int jump_compression(int i, int j, int k, int l, int m)",	.globl	jump_compression,	.globl	jump_compression                # -- Begin function jump_compression,	.globl	jump_compression                # -- Begin function jump_compression,Все компиляторы
-{,"	.type	jump_compression, @function","	.type	jump_compression,@function","	.type	jump_compression,@function",выполнели прямой переход
+{,"	.type	jump_compression, @function","	.type	jump_compression,@function","	.type	jump_compression,@function",выполнили прямой переход
 beg_1:,jump_compression:,jump_compression:                       # @jump_compression,jump_compression:                       # ,
     if (i < j),.LFB32:,	.cfi_startproc,	.cfi_startproc,и используются регистры вместо
         if (j < k),	.cfi_startproc,# %bb.0:,# %bb.0:,стека для переменных

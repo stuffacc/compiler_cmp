@@ -105,12 +105,12 @@ j4 = 2;,"	movl	$2, j4(%rip)","	movl	$2, j4(%rip)","	movl	$2, j4(%rip)",O2 и Os 
 ,"	movl	$0, i(%rip)","	movabsq	$1688867040264192, %rax         # imm = 0x6000400020000","	movdqa	.LCPI0_1(%rip), %xmm0           # xmm0 = [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0]",
 ,.LBB0_7:                                # =>This Inner Loop Header: Depth=1,"	movq	%rax, ivector4(%rip)","	xorl	%eax, %eax","O2, Os: запись нескольких элементов"
 ,"	cmpl	$5, i(%rip)","	movl	$655368, ivector4+8(%rip)       # imm = 0xA0008","	movdqa	.LCPI0_2(%rip), %xmm1           # xmm1 = [9223372039002259456,9223372039002259456]",массива через константы
-,	jg	.LBB0_10,,"	movdqa	.LCPI0_3(%rip), %xmm2           # xmm2 = [9223372039002259462,9223372039002259462]",При этом Os сохраняет цикл на 3 итерации
-,# %bb.8:                                #   in Loop: Header=BB0_7 Depth=1,,"	pshufd	$245, %xmm2, %xmm3              # xmm3 = xmm2[1,1,3,3]","Os не оптимальнo ни по размеру, ни по скорости"
-,"	movl	i(%rip), %eax",,"	leaq	ivector4(%rip), %rcx",
-,	shll	%eax,,"	movdqa	.LCPI0_4(%rip), %xmm4           # xmm4 = [2,2]",
+,	jg	.LBB0_10,,"	movdqa	.LCPI0_3(%rip), %xmm2           # xmm2 = [9223372039002259462,9223372039002259462]",
+,# %bb.8:                                #   in Loop: Header=BB0_7 Depth=1,,"	pshufd	$245, %xmm2, %xmm3              # xmm3 = xmm2[1,1,3,3]",Os: обработка блоков по 4 байта
+,"	movl	i(%rip), %eax",,"	leaq	ivector4(%rip), %rcx",SSE используется для параллельного
+,	shll	%eax,,"	movdqa	.LCPI0_4(%rip), %xmm4           # xmm4 = [2,2]",вычисления маски условий
 ,"	movw	%ax, %dx",,.LBB0_7:                                # =>This Inner Loop Header: Depth=1,
-,"	movslq	i(%rip), %rcx",,"	movdqa	%xmm0, %xmm5",
+,"	movslq	i(%rip), %rcx",,"	movdqa	%xmm0, %xmm5","Os не оптимальнo ни по размеру, ни по скорости"
 ,"	leaq	ivector4(%rip), %rax",,"	pxor	%xmm1, %xmm5",
 ,"	movw	%dx, (%rax,%rcx,2)",,"	movdqa	%xmm2, %xmm6",
 ,# %bb.9:                                #   in Loop: Header=BB0_7 Depth=1,,"	pcmpgtd	%xmm5, %xmm6",
