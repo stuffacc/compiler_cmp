@@ -1,41 +1,30 @@
 # «Сравнение и анализ оптимизаций компиляторов»
 
-## Описание
+Исследование посвящено сравнению оптимизаций, выполняемых компиляторами языка C:
 
-В рамках учебной практики проводится сравнение и анализ оптимизаций, выполняемых различными компиляторами языка C.
+- GCC 13.3.0;
+- Clang 18.1.3;
+- Intel ICX 2026.0.0.
 
-Выбраны компиляторы:
+В качестве тестов использовались программа `optbench.c` и программа обработки изображений `libgd_test.c`, использующая библиотеку libgd версии 2.3.3 и функцию `gdImageGaussianBlur`.
 
-- GCC (version 13.3.0);
-- Clang (version 18.1.3);
-- ICX (version 2026.0.0).
+## Структура проекта
 
-Основным компилятором выбран GCC.
+- [libgd_test/](libgd_test/)
+  - [asm/](libgd_test/asm/) - ассемблерные файлы теста `libgd_test.c` для разных компиляторов
+  - [src/](libgd_test/src/)
+    - [libgd_test.c](libgd_test/src/libgd_test.c)
+  - [tables/](libgd_test/tables/) - таблицы сравнения теста `libgd_test.c`
+  - [libgd_test_commands.md](libgd_test/libgd_test_commands.md) - используемые команды для `libgd_test.c`
 
-## Структура
+- [optbench/](optbench/)
+  - [asm/](optbench/asm/) - ассемблерные файлы теста `optbench.c` для разных компиляторов
+  - [src/](optbench/src/)
+    - [optbench.c](optbench/src/optbench.c)
+  - [tables/](optbench/tables/) - таблицы сравнения теста `optbench.c`
+  - [optbench_commands.md](optbench/optbench_commands.md) - используемые команды для `optbench.c`
 
-/{название теста}
-
-    /asm - ассемблерные файлы теста для разных компиляторов
-
-    /src - исходный код теста 
-
-    /tables - таблицы сравнения
-
-
-## Сценарий применения языка C
-
-В качестве тестовой задачи для сравнения возможностей оптимизаторов компиляторов языка C был выбран алгоритм гауссового размытия изображений, выполняющий свёртку двумерной матрицы пикселей с ядром 3×3. Данный тест представляет интерес для анализа оптимизаций, поскольку содержит вложенные циклы, операции умножения-сложения, работает с матрицами.
-
-
-## Используемые команды для optbench
-
-[optbench_commands.md](optbench/optbench_commands.md)
-
-## Используемые команды для libgd_test
-
-[libgd_test_commands.md](libgd_test/libgd_test_commands.md)
-
-## Результат
-
-[report.pdf](report.pdf)
+- [compilers.csv](compilers.csv) - таблица с версиями компиляторов
+- [README.md](README.md)
+- [report.pdf](report.pdf) - отчёт
+- [system.csv](system.csv) - таблица с информацией о системе
